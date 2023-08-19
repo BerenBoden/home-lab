@@ -11,13 +11,13 @@ autoinstall:
       uri: http://ports.ubuntu.com/ubuntu-ports
   identity:
     hostname: seclab-ubuntu22
-    username: SECLAB_USER
-    password: 'SECLAB_PASSWORD'
+    username: seclab-ubuntu22
+    password: 'asd15@#AB'
   ssh:
     allow-pw: true
     install-server: true
     authorized-keys: 
-      - SECLAB_SSH_KEY
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDb2QlT6EPADIZ6ndRGURhjSPKw4z32M5lT+ZF+Ize4yho6ghpdeOQc+PZIRau/7sa3JT8PBkCEntop62TwmMSo6b0XyeTdRPssevqTFsBk6nfm9IKWI7uXgUDSaT1m/ZbOeMUagy0jRswNxUAqOAxcmf5im3NYKfyq+X4SxAALDrYMe/tyYZQJu+Npr5oRKQcuDmuObLoV8vQG9HVhxdH+ef9+YKwaxN7dPEfUd5C5TjIWgqxmACDA+1gExin2wm5P20NRwUaMZn3hB9w8/1gL46kISb1k+IeBT9LBDfbH23YQTgRY/B5wV0oapSa2S8+BG4YUswW++lTHjUifXl+PorqEZhvz+ggho3pxUMxtPkYwV1dkCoo/7i8IYwvMwDeaxZdpvXwcURWXK8J5e24p97gY6isjFYUzBJN9Cv7MuwnqcuNPrNTWHVcOy6Ie13E+7kekS6HuLSdXLxfPHxEhChupcdL0Mtmwgf4NLcsij5xJoLl7cc/nr81KypxHVtU= bricky@bricky
   locale: en_US
   keyboard: 
     layout: us
@@ -40,6 +40,6 @@ autoinstall:
   packages:
     - qemu-guest-agent
   late-commands:
-    - "echo 'Defaults:SECLAB_USER !requiretty' > /target/etc/sudoers.d/SECLAB_USER"
-    - "echo 'SECLAB_USER ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/SECLAB_USER"
-    - "chmod 440 /target/etc/sudoers.d/SECLAB_USER"
+    - "echo 'Defaults:seclab-ubuntu22 !requiretty' > /target/etc/sudoers.d/seclab-ubuntu22"
+    - "echo 'seclab-ubuntu22 ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/seclab-ubuntu22"
+    - "chmod 440 /target/etc/sudoers.d/seclab-ubuntu22"

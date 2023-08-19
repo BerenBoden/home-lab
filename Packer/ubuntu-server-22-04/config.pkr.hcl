@@ -7,51 +7,52 @@ packer {
   }
 }
 
-variable "hostname" {
-  type    = string
-  default = "seclab-ubuntu-server"
-}
-
 variable "proxmox_node" {
   type    = string
   default = "proxmox"
 }
 
-locals {
-  username          = vault("/seclab/data/seclab/", "seclab_user")
-  password          = vault("/seclab/data/seclab/", "seclab_password")
-  proxmox_api_id      = vault("/seclab/data/seclab/", "proxmox_api_id")
-  proxmox_api_token = vault("/seclab/data/seclab/", "proxmox_api_token")
+variable "proxmox_api_id" {
+  type    = string
+  default = "root@pam!packer"
 }
 
+variable "proxmox_api_token" {
+  type    = string
+  default = "a279805f-c94d-4b69-83f5-8b715bfbb4c8"
+}
 
 source "proxmox-iso" "seclab-ubuntu-server" {
-  proxmox_url              = "https://${var.proxmox_node}:8006/api2/json"
+  proxmox_url              = "https://192.168.1.169:8006/api2/json"
   node                     = "${var.proxmox_node}"
-  username                 = "${local.proxmox_api_id}"
-  token                    = "${local.proxmox_api_token}"
-  iso_file                 = "local:iso/ubuntu-22.04-live-server-amd64.iso"
-  iso_checksum             = "sha256:10f19c5b2b8d6db711582e0e27f5116296c34fe4b313ba45f9b201a5007056cb"
-  ssh_username             = "${local.username}"
-  ssh_password             = "${local.password}"
+  username                 = "${var.proxmox_api_id}"
+  token                    = "${var.proxmox_api_token}"
+  iso_file                 = "local:iso/ubuntu-22.04.2-live-server-amd64.iso"
+  iso_checksum             = "sha256:5e38b55d57d94ff029719342357325ed3bda38fa80054f9330dc789cd2d43931"
+  ssh_username             = "seclab-ubuntu22"
+  ssh_password             = "asd15@#AB"
   ssh_handshake_attempts   = 100
   ssh_timeout              = "4h"
   http_directory           = "http"
   cores                    = 2
   memory                   = 2048
-  vm_name                  = "seclab-ubuntu-server-22-04"
+  vm_name                  = "seclab-ubuntu-server"
+  vm_id                    = "110"
   qemu_agent               = true
   template_description     = "Ubuntu 22.04 Server"
   insecure_skip_tls_verify = true
+    # VM Cloud-Init Settings
+  cloud_init = true
+  cloud_init_storage_pool = "local"
 
   network_adapters {
     bridge = "vmbr1"
   }
   disks {
     disk_size    = "30G"
-    storage_pool = "local-lvm"
+    storage_pool = "local"
   }
-  boot_wait = "10s"
+  boot_wait = "5s"
   boot_command = [
     "<esc><esc><esc><esc>e<wait>",
     "<del><del><del><del><del><del><del><del>",
@@ -73,8 +74,35 @@ source "proxmox-iso" "seclab-ubuntu-server" {
     "boot<enter>",
     "<enter><f10><wait>"
   ]
+
+    # PACKER Autoinstall Settings
 }
 
 build {
   sources = ["sources.proxmox-iso.seclab-ubuntu-server"]
+  # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
+    provisioner "shell" {
+        inline = [
+            "while [ ! -f /var/lib/cloud/instance/boot-finished ]; do echo 'Waiting for cloud-init...'; sleep 1; done",
+            "sudo rm /etc/ssh/ssh_host_*",
+            "sudo truncate -s 0 /etc/machine-id",
+            "sudo apt -y autoremove --purge",
+            "sudo apt -y clean",
+            "sudo apt -y autoclean",
+            "sudo cloud-init clean",
+            "sudo rm -f /etc/cloud/cloud.cfg.d/subiquity-disable-cloudinit-networking.cfg",
+            "sudo sync"
+        ]
+    }
+
+    # Provisioning the VM Template for Cloud-Init Integration in Proxmox #2
+    provisioner "file" {
+        source = "files/99-pve.cfg"
+        destination = "/tmp/99-pve.cfg"
+    }
+
+    # Provisioning the VM Template for Cloud-Init Integration in Proxmox #3
+    provisioner "shell" {
+        inline = [ "sudo cp /tmp/99-pve.cfg /etc/cloud/cloud.cfg.d/99-pve.cfg" ]
+    }
 }

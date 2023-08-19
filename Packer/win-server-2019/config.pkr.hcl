@@ -9,7 +9,7 @@ packer {
 
 variable "hostname" {
   type    = string
-  default = "seclab-win-server"
+  default = "windows-server"
 }
 
 variable "proxmox_hostname" {
@@ -18,47 +18,43 @@ variable "proxmox_hostname" {
 }
 
 
-locals {
-  username          = vault("/seclab/data/seclab/", "seclab_user")
-  password          = vault("/seclab/data/seclab/", "seclab_windows_password")
-  proxmox_api_id      = vault("/seclab/data/seclab/", "proxmox_api_id")
-  proxmox_api_token = vault("/seclab/data/seclab/", "proxmox_api_token")
-}
-
-
-source "proxmox-iso" "seclab-win-server" {
-  proxmox_url              = "https://${var.proxmox_node}:8006/api2/json"
-  node                     = "${var.proxmox_node}"
-  username                 = "${local.proxmox_api_id}"
-  token                    = "${local.proxmox_api_token}"
-  iso_file                 = "local:iso/Win-Server-2019.iso"
+source "proxmox-iso" "windows-server" {
+  proxmox_url              = "https://192.168.1.169:8006/api2/json"
+  node                     = "proxmox"
+  username                 = "root@pam!packer"
+  token                    = "a279805f-c94d-4b69-83f5-8b715bfbb4c8"
+  iso_file                 = "local:iso/17763.3650.221105-1748.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us.iso"
   iso_checksum             = "sha256:549bca46c055157291be6c22a3aaaed8330e78ef4382c99ee82c896426a1cee1"
   insecure_skip_tls_verify = true
   communicator             = "ssh"
-  ssh_username             = "${local.username}"
-  ssh_password             = "${local.password}"
+  ssh_username             = "windows-server"
+  ssh_password             = "asd15@#AB"
   ssh_timeout              = "30m"
   qemu_agent               = true
   cores                    = 2
   memory                   = 4096
-  vm_name                  = "seclab-win-server"
+  vm_name                  = "windows-server"
   template_description     = "Base Seclab Windows Server"
 
   additional_iso_files {
     device       = "ide3"
-    iso_file     = "local:iso/Autounattend-Win-Server.iso"
-    iso_checksum = "sha256:bf44c536d84e62ae5b1d83eca44b4725644578ddeb11d55f78fe0f4e5849f196"
+    iso_file     = "local:iso/windows-server-autounattend.iso"
+    iso_checksum = "sha256:1f7cf806b809fbca6013caa6eb011f836b5227618c579fe9e48c08bc0aeff867"
     unmount      = true
   }
 
   additional_iso_files {
     device       = "sata0"
-    iso_file     = "local:iso/virtio.iso"
+    iso_file     = "local:iso/virtio-win-0.1.229.iso"
     iso_checksum = "sha256:8a066741ef79d3fb66e536fb6f010ad91269364bd9b8c1ad7f2f5655caf8acd8"
     unmount      = true
   }
 
 
+  network_adapters {
+    bridge = "vmbr1"
+  }
+    
   network_adapters {
     bridge = "vmbr2"
   }
@@ -67,14 +63,14 @@ source "proxmox-iso" "seclab-win-server" {
     type              = "virtio"
     disk_size         = "50G"
     storage_pool_type = "lvm"
-    storage_pool      = "local-lvm"
+    storage_pool      = "local"
   }
   scsi_controller = "virtio-scsi-pci"
 }
 
 
 build {
-  sources = ["sources.proxmox-iso.seclab-win-server"]
+  sources = ["sources.proxmox-iso.windows-server"]
   provisioner "windows-shell" {
     inline = [
       "ipconfig",

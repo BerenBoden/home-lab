@@ -137,19 +137,19 @@
         <component xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS">
             <UserAccounts>
                 <AdministratorPassword>
-                    <Value>SECLAB_WINDOWS_PASSWORD</Value>
+                    <Value>asd15@#AB</Value>
                     <PlainText>true</PlainText>
                 </AdministratorPassword>
                 <LocalAccounts>
                     <LocalAccount wcm:action="add">
                         <Password>
-                            <Value>SECLAB_WINDOWS_PASSWORD</Value>
+                            <Value>asd15@#AB</Value>
                             <PlainText>true</PlainText>
                         </Password>
                         <Description>Seclab User</Description>
-                        <DisplayName>SECLAB_USER</DisplayName>
+                        <DisplayName>windows</DisplayName>
                         <Group>administrators</Group>
-                        <Name>SECLAB_USER</Name>
+                        <Name>windows</Name>
                     </LocalAccount>
                 </LocalAccounts>
             </UserAccounts>
@@ -161,10 +161,10 @@
             </OOBE>
             <AutoLogon>
                 <Password>
-                    <Value>SECLAB_WINDOWS_PASSWORD</Value>
+                    <Value>asd15@#AB</Value>
                     <PlainText>true</PlainText>
                 </Password>
-                <Username>SECLAB_USER</Username>
+                <Username>windows</Username>
                 <Enabled>true</Enabled>
             </AutoLogon>
             <FirstLogonCommands>
@@ -194,7 +194,7 @@
                     <RequiresUserInput>false</RequiresUserInput>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c wmic useraccount where "name='SECLAB_USER'" set PasswordExpires=FALSE</CommandLine>
+                    <CommandLine>cmd.exe /c wmic useraccount where "name='windows'" set PasswordExpires=FALSE</CommandLine>
                     <Order>5</Order>
                     <Description>Disable password expiration for seclab user</Description>
                 </SynchronousCommand>

@@ -59,7 +59,7 @@
                     <CreatePartitions>
                         <CreatePartition wcm:action="add">
                             <Order>1</Order>
-                            <Size>250</Size>
+                            <Size>500</Size> <!-- Size for the system reserved partition -->
                             <Type>Primary</Type>
                         </CreatePartition>
                         <CreatePartition wcm:action="add">
@@ -73,7 +73,7 @@
                             <Order>1</Order>
                             <PartitionID>1</PartitionID>
                             <Format>NTFS</Format>
-                            <Label>Boot</Label>
+                            <Label>System Reserved</Label>
                             <Active>true</Active>
                         </ModifyPartition>
                         <ModifyPartition wcm:action="add">
@@ -139,11 +139,11 @@
         <component name="Microsoft-Windows-Shell-Setup" processorArchitecture="amd64" publicKeyToken="31bf3856ad364e35" language="neutral" versionScope="nonSxS" xmlns:wcm="http://schemas.microsoft.com/WMIConfig/2002/State" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
             <AutoLogon>
                 <Password>
-                    <Value>SECLAB_WINDOWS_PASSWORD</Value>
+                    <Value>asd15@#AB</Value>
                     <PlainText>true</PlainText>
                 </Password>
                 <LogonCount>2</LogonCount>
-                <Username>SECLAB_USER</Username>
+                <Username>windows-server</Username>
                 <Enabled>true</Enabled>
             </AutoLogon>
             <FirstLogonCommands>
@@ -173,13 +173,13 @@
                     <RequiresUserInput>false</RequiresUserInput>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>cmd.exe /c wmic useraccount where "name='SECLAB_USER'" set PasswordExpires=FALSE</CommandLine>
+                    <CommandLine>cmd.exe /c wmic useraccount where "name='windows-server'" set PasswordExpires=FALSE</CommandLine>
                     <Order>5</Order>
                     <Description>Disable password expiration for seclab user</Description>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <!-- Install QEMU Agent -->
-                    <CommandLine>msiexec /q /i F:\guest-agent\qemu-ga-x86_64.msi</CommandLine>
+                    <CommandLine>msiexec /q /i X:\guest-agent\qemu-ga-x86_64.msi</CommandLine>
                     <Order>6</Order>
                     <Description>Install QEMU Agent</Description>
                 </SynchronousCommand>
@@ -195,18 +195,18 @@
             </OOBE>
             <UserAccounts>
                 <AdministratorPassword>
-                    <Value>SECLAB_WINDOWS_PASSWORD</Value>
+                    <Value>asd15@#AB</Value>
                     <PlainText>true</PlainText>
                 </AdministratorPassword>
                 <LocalAccounts>
                     <LocalAccount wcm:action="add">
                         <Password>
-                            <Value>SECLAB_WINDOWS_PASSWORD</Value>
+                            <Value>asd15@#AB</Value>
                             <PlainText>true</PlainText>
                         </Password>
                         <Group>administrators</Group>
                         <DisplayName>Seclab</DisplayName>
-                        <Name>SECLAB_USER</Name>
+                        <Name>windows-server</Name>
                         <Description>Seclab User</Description>
                     </LocalAccount>
                 </LocalAccounts>
