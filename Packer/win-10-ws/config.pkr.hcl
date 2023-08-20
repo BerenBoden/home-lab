@@ -22,7 +22,7 @@ source "proxmox-iso" "windows-10" {
   node         = "${var.proxmox_node}"
   username     = "root@pam!packer"
   token        = "a279805f-c94d-4b69-83f5-8b715bfbb4c8"
-  iso_file     = "local:iso/Win-10-Enterprise.iso"
+  iso_file     = "local:iso/Win10_22H2_English_x64v1.iso"
   iso_checksum = "sha256:ef7312733a9f5d7d51cfa04ac497671995674ca5e1058d5164d6028f0938d668"
   /*skip_export             = true*/
   communicator             = "ssh"
