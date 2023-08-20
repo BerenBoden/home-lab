@@ -48,9 +48,6 @@ source "proxmox-iso" "windows-10" {
     bridge = "vmbr2"
   }
 
-  cloud_init              = true
-  cloud_init_storage_pool = "local"
-
   disks {
     type              = "virtio"
     disk_size         = "50G"
