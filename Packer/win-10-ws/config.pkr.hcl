@@ -54,6 +54,10 @@ source "proxmox-iso" "windows-10" {
     bridge = "vmbr2"
   }
 
+  network_adapters {
+    bridge = "vmbr1"
+  }
+
   disks {
     type              = "virtio"
     disk_size         = "50G"
