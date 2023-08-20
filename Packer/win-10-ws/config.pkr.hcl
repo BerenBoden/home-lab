@@ -18,7 +18,7 @@ variable "proxmox_node" {
 }
 
 source "proxmox-iso" "windows-10" {
-  proxmox_url  = "https://${var.proxmox_node}:8006/api2/json"
+  proxmox_url  = "https://192.168.1.169:8006/api2/json"
   node         = "${var.proxmox_node}"
   username     = "root@pam!packer"
   token        = "a279805f-c94d-4b69-83f5-8b715bfbb4c8"
@@ -38,14 +38,14 @@ source "proxmox-iso" "windows-10" {
 
   additional_iso_files {
     device       = "ide3"
-    iso_file     = "local:iso/Autounattend-Win-10.iso"
+    iso_file     = "local:iso/Win10_22H2_English_x64v1.iso"
     iso_checksum = "sha256:2893ca8f6d1f420436b6c213fa618710e7689a67d4bf924263361f07cced3b34"
     unmount      = true
   }
 
   additional_iso_files {
     device       = "sata0"
-    iso_file     = "local:iso/virtio.iso"
+    iso_file     = "local:iso/virtio-win-0.1.229.iso"
     iso_checksum = "sha256:8a066741ef79d3fb66e536fb6f010ad91269364bd9b8c1ad7f2f5655caf8acd8"
     unmount      = true
   }
