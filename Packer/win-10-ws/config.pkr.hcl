@@ -57,7 +57,7 @@ source "proxmox-iso" "windows-10" {
   disks {
     type              = "virtio"
     disk_size         = "50G"
-    storage_pool      = "local-lvm"
+    storage_pool      = "local"
   }
   scsi_controller = "virtio-scsi-pci"
 
