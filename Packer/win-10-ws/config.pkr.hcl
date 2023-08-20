@@ -39,7 +39,7 @@ source "proxmox-iso" "windows-10" {
   additional_iso_files {
     device       = "ide3"
     iso_file     = "local:iso/windows-10-autounattend.iso"
-    iso_checksum = "sha256:2138f6f62f764e0e8730b8a1978b90b28d8f12aee8f6d82b9e0c7ee8c8559fe4"
+    iso_checksum = "sha256:ddb4ace2f18f47eed2d3c0096d78e0f99bb4f6925dffe96f75b626431edd1aee"
     unmount      = true
   }
 
