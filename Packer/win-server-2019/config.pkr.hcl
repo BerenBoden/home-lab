@@ -46,7 +46,7 @@ source "proxmox-iso" "windows-server" {
   additional_iso_files {
     device       = "sata0"
     iso_file     = "local:iso/virtio-win-0.1.229.iso"
-    iso_checksum = "sha256:8a066741ef79d3fb66e536fb6f010ad91269364bd9b8c1ad7f2f5655caf8acd8"
+    iso_checksum = "sha256:c88a0dde34605eaee6cf889f3e2a0c2af3caeb91b5df45a125ca4f701acbbbe0"
     unmount      = true
   }
 

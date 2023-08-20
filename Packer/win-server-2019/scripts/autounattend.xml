@@ -179,7 +179,7 @@
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
                     <!-- Install QEMU Agent -->
-                    <CommandLine>msiexec /q /i X:\guest-agent\qemu-ga-x86_64.msi</CommandLine>
+                    <CommandLine>msiexec /q /i F:\guest-agent\qemu-ga-x86_64.msi</CommandLine>
                     <Order>6</Order>
                     <Description>Install QEMU Agent</Description>
                 </SynchronousCommand>
