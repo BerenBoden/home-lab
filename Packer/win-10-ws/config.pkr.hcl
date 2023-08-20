@@ -8,7 +8,7 @@ packer {
 }
 
 source "proxmox-iso" "windows-10" {
-  proxmox_url  = "https://192.168.1.169:8006/api2/json"
+  proxmox_url  = "http://192.168.1.169:8006/api2/json"
   node         = "proxmox"
   username     = "root@pam!packer"
   token        = "a279805f-c94d-4b69-83f5-8b715bfbb4c8"
