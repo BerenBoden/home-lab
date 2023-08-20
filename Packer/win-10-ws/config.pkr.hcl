@@ -7,19 +7,9 @@ packer {
   }
 }
 
-variable "hostname" {
-  type    = string
-  default = "windows-10"
-}
-
-variable "proxmox_node" {
-  type    = string
-  default = "proxmox"
-}
-
 source "proxmox-iso" "windows-10" {
   proxmox_url  = "https://192.168.1.169:8006/api2/json"
-  node         = "${var.proxmox_node}"
+  node         = "proxmox"
   username     = "root@pam!packer"
   token        = "a279805f-c94d-4b69-83f5-8b715bfbb4c8"
   iso_file     = "local:iso/Win10_22H2_English_x64v1.iso"
@@ -39,24 +29,27 @@ source "proxmox-iso" "windows-10" {
   additional_iso_files {
     device       = "ide3"
     iso_file     = "local:iso/windows-10-autounattend.iso"
-    iso_checksum = "sha256:ddb4ace2f18f47eed2d3c0096d78e0f99bb4f6925dffe96f75b626431edd1aee"
+    iso_checksum = "sha256:9506be70fddac41e436de683fbb6da618c2065e8beec2e162551d3c07d11fc1f"
     unmount      = true
   }
 
   additional_iso_files {
     device       = "sata0"
     iso_file     = "local:iso/virtio-win-0.1.229.iso"
-    iso_checksum = "sha256:8a066741ef79d3fb66e536fb6f010ad91269364bd9b8c1ad7f2f5655caf8acd8"
+    iso_checksum = "sha256:c88a0dde34605eaee6cf889f3e2a0c2af3caeb91b5df45a125ca4f701acbbbe0"
     unmount      = true
+  }
+
+  network_adapters {
+    bridge = "vmbr1"
   }
 
   network_adapters {
     bridge = "vmbr2"
   }
 
-  network_adapters {
-    bridge = "vmbr1"
-  }
+  cloud_init              = true
+  cloud_init_storage_pool = "local"
 
   disks {
     type              = "virtio"
