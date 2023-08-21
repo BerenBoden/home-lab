@@ -12,22 +12,9 @@ variable "hostname" {
   default = "seclab-kali"
 }
 
-variable "proxmox_node" {
-  type    = string
-  default = "proxmox"
-}
-
-locals {
-  username          = vault("/seclab/data/seclab/", "seclab_user")
-  password          = vault("/seclab/data/seclab/", "seclab_password")
-  proxmox_api_id      = vault("/seclab/data/seclab/", "proxmox_api_id")
-  proxmox_api_token = vault("/seclab/data/seclab/", "proxmox_api_token")
-}
-
-
 source "proxmox-iso" "seclab-kali" {
-  proxmox_url              = "https://${var.proxmox_node}:8006/api2/json"
-  node                     = "${var.proxmox_node}"
+  proxmox_url              = "https://192.168.1.169:8006/api2/json"
+  node                     = "proxmox"
   username                 = "${local.proxmox_api_id}"
   token                    = "${local.proxmox_api_token}"
   iso_file                 = "local:iso/kali.iso"

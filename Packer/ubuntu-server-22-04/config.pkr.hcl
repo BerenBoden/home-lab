@@ -22,7 +22,7 @@ variable "proxmox_api_token" {
   default = "a279805f-c94d-4b69-83f5-8b715bfbb4c8"
 }
 
-source "proxmox-iso" "seclab-ubuntu-server" {
+source "proxmox-iso" "security-onion" {
   proxmox_url              = "https://192.168.1.169:8006/api2/json"
   node                     = "${var.proxmox_node}"
   username                 = "${var.proxmox_api_id}"
@@ -35,8 +35,8 @@ source "proxmox-iso" "seclab-ubuntu-server" {
   ssh_timeout              = "4h"
   http_directory           = "http"
   cores                    = 2
-  memory                   = 2048
-  vm_name                  = "seclab-ubuntu-server"
+  memory                   = 8192
+  vm_name                  = "security-onion"
   vm_id                    = "110"
   qemu_agent               = true
   template_description     = "Ubuntu 22.04 Server"
@@ -79,7 +79,7 @@ source "proxmox-iso" "seclab-ubuntu-server" {
 }
 
 build {
-  sources = ["sources.proxmox-iso.seclab-ubuntu-server"]
+  sources = ["sources.proxmox-iso.security-onion"]
   # Provisioning the VM Template for Cloud-Init Integration in Proxmox #1
     provisioner "shell" {
         inline = [

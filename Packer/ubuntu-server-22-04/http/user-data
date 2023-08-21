@@ -10,9 +10,9 @@ autoinstall:
     - arches: [default]
       uri: http://ports.ubuntu.com/ubuntu-ports
   identity:
-    hostname: seclab-ubuntu22
-    username: seclab-ubuntu22
-    password: 'asd15@#AB'
+    hostname: security-onion
+    username: security-onion
+    password: asd15@#AB
   ssh:
     allow-pw: true
     install-server: true
@@ -40,6 +40,6 @@ autoinstall:
   packages:
     - qemu-guest-agent
   late-commands:
-    - "echo 'Defaults:seclab-ubuntu22 !requiretty' > /target/etc/sudoers.d/seclab-ubuntu22"
-    - "echo 'seclab-ubuntu22 ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/seclab-ubuntu22"
-    - "chmod 440 /target/etc/sudoers.d/seclab-ubuntu22"
+    - "echo 'Defaults:security-onion !requiretty' > /target/etc/sudoers.d/security-onion"
+    - "echo 'security-onion ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/security-onion"
+    - "chmod 440 /target/etc/sudoers.d/security-onion"
