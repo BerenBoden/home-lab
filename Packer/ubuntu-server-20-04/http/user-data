@@ -38,6 +38,6 @@ autoinstall:
   packages:
     - qemu-guest-agent
   late-commands:
-    - "echo 'Defaults:seclab !requiretty' > /target/etc/sudoers.d/seclab"
-    - "echo 'seclab ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/seclab"
-    - "chmod 440 /target/etc/sudoers.d/seclab"
+    - "echo 'Defaults:ubuntu-server !requiretty' > /target/etc/sudoers.d/ubuntu-server"
+    - "echo 'ubuntu-server ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/ubuntu-server"
+    - "chmod 440 /target/etc/sudoers.d/ubuntu-server"
