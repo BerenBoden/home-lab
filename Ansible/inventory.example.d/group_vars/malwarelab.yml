@@ -1,5 +1,5 @@
 ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
-ansible_user: seclab
+ansible_user: Administrator
 ansible_password: asd15@#AB
 ansible_connection: ssh
 ansible_shell_type: cmd
