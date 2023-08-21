@@ -9,10 +9,10 @@ packer {
 
 variable "hostname" {
   type    = string
-  default = "seclab-kali"
+  default = "kali-black"
 }
 
-source "proxmox-iso" "seclab-kali" {
+source "proxmox-iso" "kali-black" {
   proxmox_url              = "https://192.168.1.169:8006/api2/json"
   node                     = "proxmox"
   username                 = "${local.proxmox_api_id}"
@@ -26,7 +26,7 @@ source "proxmox-iso" "seclab-kali" {
   http_directory           = "http"
   cores                    = 4
   memory                   = 8192
-  vm_name                  = "seclab-kali"
+  vm_name                  = "kali-black"
   qemu_agent               = true
   template_description     = "Kali"
   insecure_skip_tls_verify = true
@@ -45,7 +45,7 @@ source "proxmox-iso" "seclab-kali" {
     "<esc><wait>",
     "/install.amd/vmlinuz noapic ",
     "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/kali.preseed ",
-    "hostname=seclab-kali ",
+    "hostname=kali-black ",
     "auto=true ",
     "interface=auto ",
     "domain=vm ",
@@ -54,5 +54,5 @@ source "proxmox-iso" "seclab-kali" {
 }
 
 build {
-  sources = ["sources.proxmox-iso.seclab-kali"]
+  sources = ["sources.proxmox-iso.kali-black"]
 }
