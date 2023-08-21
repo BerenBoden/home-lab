@@ -9,12 +9,12 @@ packer {
 
 variable "username" {
   type    = string
-  default = "kde"
+  default = "ubuntu-server"
 }
 
 variable "password" {
   type    = string
-  default = "seclab"
+  default = "asd15@#AB"
 }
 
 variable "hostname" {
@@ -40,10 +40,10 @@ source "proxmox-iso" "ubuntu-server" {
   username               = "root@pam!packer"
   ssh_handshake_attempts = 100
   ssh_timeout            = "4h"
-  http_directory         = "http"+++
+  http_directory         = "http"
   cores                  = 2
   memory                 = 2048
-  vm_name                = "ubuntu-server-22-04"
+  vm_name                = "ubuntu-server"
   qemu_agent             = true
   template_description   = "Seclab Ubuntu Server 22.04.2"
 
@@ -87,9 +87,9 @@ build {
     inline = [
       "sudo sed -i 's/ubuntu-server/${var.hostname}/g' /etc/hosts",
       "sudo sed -i 's/ubuntu-server/${var.hostname}/g' /etc/hostname",
-      "mkdir /home/seclab/.ssh",
-      "echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCZj/mKU/5/rygeoJY4Xpp48g0f6Wu/Iuj4NxIyiEk/fPZWqEMz0UkSI8qsj0RHIxAmUqDYZXrv52CeVpWC6OHqa6bmKtrm7IUustyIxck/MmCTbe8a2OZD7R1hdMVB3G82qZrYIdJ8jmrRle+DAcgt3fjGl2QKYizD0sTaJn1nIjobZq5VGYIDdOrFJ9GirXdcoo6bdepHsr7mcC+iVYW0kAjdXpcngtxRItov8P9f61NHX2FGnL/Lg5B/L5XzT2ucd1ditNRC/HMw0gxWfnhoS5OKrH3qNkWJO2dzd/cdjB74x2sJEVh/dbCRkJfPvBs5L2FSM7RmO6P8kWgYt9zcq4wFiAFB40hGiHhwed3MBa0F+U99WZZYsNF1yvWl/bHi5sPoEuMR8ka+iYHb1U17/hOOl6yrm94Au8Rll3yyj27NDF/ame5Nlg810HKpGKJYTJJqEHEusz2ZkY5+Rpb26FW1oT4XZI7I/1RgDwUVI/oh+xcdw2jr1dAWIYt2FR0= kde@seclab-kde-jumpbox' > /home/seclab/.ssh/authorized_keys",
-      "chmod 0600 /home/seclab/.ssh/authorized_keys"
+      "mkdir /home/ubuntu-server/.ssh",
+      "echo 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCZj/mKU/5/rygeoJY4Xpp48g0f6Wu/Iuj4NxIyiEk/fPZWqEMz0UkSI8qsj0RHIxAmUqDYZXrv52CeVpWC6OHqa6bmKtrm7IUustyIxck/MmCTbe8a2OZD7R1hdMVB3G82qZrYIdJ8jmrRle+DAcgt3fjGl2QKYizD0sTaJn1nIjobZq5VGYIDdOrFJ9GirXdcoo6bdepHsr7mcC+iVYW0kAjdXpcngtxRItov8P9f61NHX2FGnL/Lg5B/L5XzT2ucd1ditNRC/HMw0gxWfnhoS5OKrH3qNkWJO2dzd/cdjB74x2sJEVh/dbCRkJfPvBs5L2FSM7RmO6P8kWgYt9zcq4wFiAFB40hGiHhwed3MBa0F+U99WZZYsNF1yvWl/bHi5sPoEuMR8ka+iYHb1U17/hOOl6yrm94Au8Rll3yyj27NDF/ame5Nlg810HKpGKJYTJJqEHEusz2ZkY5+Rpb26FW1oT4XZI7I/1RgDwUVI/oh+xcdw2jr1dAWIYt2FR0= ubuntu-server@ubuntu-server' > /home/ubuntu-server/.ssh/authorized_keys",
+      "chmod 0600 /home/ubuntu-server/.ssh/authorized_keys"
     ]
   }
 }
