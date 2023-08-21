@@ -1,2 +1,3 @@
   ansible_user: Administrator
   ansible_password: asd15@#AB
+  ansible_ssh_pass: asd15@#AB
