@@ -17,7 +17,7 @@ autoinstall:
     allow-pw: true
     install-server: true
     authorized-keys: 
-      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDb2QlT6EPADIZ6ndRGURhjSPKw4z32M5lT+ZF+Ize4yho6ghpdeOQc+PZIRau/7sa3JT8PBkCEntop62TwmMSo6b0XyeTdRPssevqTFsBk6nfm9IKWI7uXgUDSaT1m/ZbOeMUagy0jRswNxUAqOAxcmf5im3NYKfyq+X4SxAALDrYMe/tyYZQJu+Npr5oRKQcuDmuObLoV8vQG9HVhxdH+ef9+YKwaxN7dPEfUd5C5TjIWgqxmACDA+1gExin2wm5P20NRwUaMZn3hB9w8/1gL46kISb1k+IeBT9LBDfbH23YQTgRY/B5wV0oapSa2S8+BG4YUswW++lTHjUifXl+PorqEZhvz+ggho3pxUMxtPkYwV1dkCoo/7i8IYwvMwDeaxZdpvXwcURWXK8J5e24p97gY6isjFYUzBJN9Cv7MuwnqcuNPrNTWHVcOy6Ie13E+7kekS6HuLSdXLxfPHxEhChupcdL0Mtmwgf4NLcsij5xJoLl7cc/nr81KypxHVtU= bricky@bricky
+      - ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCN/Evb2IfxzM/z+bxlvFeLOYgiKTYB0WqZpgZWWZc7fnvAdGtHOK6EZrqNHiZcJ9bJt7b0iSyyLr+LCm0RhiDjp6FyDUP9cBCyIdSj3iNoWVIu7Qfao9DOfSl66gt3dwNPVoY/LpfXxFredTfmyZiGkorcg7o0wJ0a5ULgB24328c35l0Ljzw26ZjNk3xWaqgAFggVI0HkXooHosQnvidXyFas3t1jG6COFZ92/x3wrU1OhpjVykEcQXoqglN6wM8eZs/2dI6T1VVsK/Mm7cpjqscyfeuuIRW/OyZ9eGWcJmIrM4G41EYONHob4HFXT7IBTCrr1HgdhaZxbtcHdnDcRCrBsV6Mv9PdF/n65/RCKQ41dpx/AfzK3shPv553vL9SBtgXcbfmn4mk+D9jpOw80wyaxocuu1G/bDV3RBYx0LKdDzPb++Z5Ex54vDzdAexPfsQTYAqPbFpxw24zVV4kn8EgxDdK+hik94IqWJPjK2O5TRDJVFPfQ9p88Efm100= ubuntu@ubuntu-Standard-PC-i440FX-PIIX-1996
   locale: en_US
   keyboard: 
     layout: us
