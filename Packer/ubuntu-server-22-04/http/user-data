@@ -10,8 +10,8 @@ autoinstall:
     - arches: [default]
       uri: http://ports.ubuntu.com/ubuntu-ports
   identity:
-    hostname: security-onion
-    username: security-onion
+    hostname: ubuntu-server
+    username: ubuntu-server
     password: asd15@#AB
   ssh:
     allow-pw: true
@@ -40,6 +40,6 @@ autoinstall:
   packages:
     - qemu-guest-agent
   late-commands:
-    - "echo 'Defaults:security-onion !requiretty' > /target/etc/sudoers.d/security-onion"
-    - "echo 'security-onion ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/security-onion"
-    - "chmod 440 /target/etc/sudoers.d/security-onion"
+    - "echo 'Defaults:ubuntu-server !requiretty' > /target/etc/sudoers.d/ubuntu-server"
+    - "echo 'ubuntu-server ALL=(ALL) NOPASSWD: ALL' >> /target/etc/sudoers.d/ubuntu-server"
+    - "chmod 440 /target/etc/sudoers.d/ubuntu-server"
