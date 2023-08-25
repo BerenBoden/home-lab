@@ -1,6 +1,6 @@
 ---
 - name: Install Sysmon
-  hosts: windows-hosts
+  hosts: domaincontrollers
   tasks:
     - name: Download Sysmon
       ansible.windows.win_get_url:
