@@ -15,12 +15,12 @@ variable "hostname" {
 source "proxmox-iso" "kali-black" {
   proxmox_url              = "https://192.168.1.169:8006/api2/json"
   node                     = "proxmox"
-  username                 = "${local.proxmox_api_id}"
-  token                    = "${local.proxmox_api_token}"
-  iso_file                 = "local:iso/kali.iso"
-  iso_checksum             = "sha256:4aeaac60c69fb7137beaaef1fa48c194431274bcb8abf2d9f01c1087c8263b6a"
-  ssh_username             = "${local.username}"
-  ssh_password             = "${local.password}"
+  username                 = "kali-black"
+  token                    = "a279805f-c94d-4b69-83f5-8b715bfbb4c8"
+  iso_file                 = "local:iso/kali-linux-2020.2-installer-amd64.iso"
+  iso_checksum             = "sha256:ae9a3b6a1e016cd464ca31ef5055506cecfc55a10f61bf1acb8313eddbe12ad7"
+  ssh_username             = "kali-black"
+  ssh_password             = "asd15@#AB"
   ssh_handshake_attempts   = 100
   ssh_timeout              = "4h"
   http_directory           = "http"
