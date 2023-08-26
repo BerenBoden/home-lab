@@ -38,7 +38,7 @@ source "proxmox-iso" "kali-black" {
 
   disks {
     disk_size    = "50G"
-    storage_pool = "local-lvm"
+    storage_pool = "local"
   }
   boot_wait = "10s"
   boot_command = [
