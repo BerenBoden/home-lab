@@ -43,13 +43,13 @@ source "proxmox-iso" "kali-black" {
   boot_wait = "5s"
   boot_command = [
     "<esc><wait>",
-    "/install.amd/vmlinuz noapic ",
+
     "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/kali.preseed ",
     "hostname=kali ",
     "auto=true ",
     "interface=auto ",
     "domain=vm ",
-    "initrd=/install.amd/initrd.gz -- <enter>"
+
   ]
 }
 
