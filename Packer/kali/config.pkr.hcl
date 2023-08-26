@@ -45,7 +45,7 @@ source "proxmox-iso" "kali-black" {
     "<esc><wait>",
     "/install.amd/vmlinuz noapic ",
     "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/kali.preseed ",
-    "hostname=kali-black ",
+    "hostname=kali ",
     "auto=true ",
     "interface=auto ",
     "domain=vm ",
