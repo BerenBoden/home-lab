@@ -4,8 +4,8 @@ d-i pkgsel/include string kali-linux-default kali-desktop-xfce
 # User information
 d-i passwd/user-fullname string kali
 d-i passwd/username string kali
-d-i passwd/user-password password kali
-d-i passwd/user-password-again password kali
+d-i passwd/user-password asd15@#AB kali
+d-i passwd/user-password-again asd15@#AB kali
 
 # Region Information
 d-i time/zone string US/Eastern
