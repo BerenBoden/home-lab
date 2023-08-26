@@ -33,7 +33,7 @@ source "proxmox-iso" "kali-black" {
 
 
   network_adapters {
-    bridge = "vmbr2"
+    bridge = "vmbr1"
   }
 
   disks {
