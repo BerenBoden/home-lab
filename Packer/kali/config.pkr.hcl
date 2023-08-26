@@ -17,8 +17,8 @@ source "proxmox-iso" "kali-black" {
   node                     = "proxmox"
   username                 = "root@pam!packer"
   token                    = "a279805f-c94d-4b69-83f5-8b715bfbb4c8"
-  iso_file                 = "local:iso/kali-linux-2020.2-installer-amd64.iso"
-  iso_checksum             = "sha256:ae9a3b6a1e016cd464ca31ef5055506cecfc55a10f61bf1acb8313eddbe12ad7"
+  iso_file                 = "local:iso/kali-linux-2023.1-live-amd64.iso"
+  iso_checksum             = "sha256:b7c93ff333b6e3909a6e28de5408a916cbea2b5c2371e4b76ec12900d1158bc8"
   ssh_username             = "kali-black"
   ssh_password             = "asd15@#AB"
   ssh_handshake_attempts   = 100
@@ -40,7 +40,7 @@ source "proxmox-iso" "kali-black" {
     disk_size    = "50G"
     storage_pool = "local"
   }
-  boot_wait = "10s"
+  boot_wait = "5s"
   boot_command = [
     "<esc><wait>",
     "/install.amd/vmlinuz noapic ",
